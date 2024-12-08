@@ -14,7 +14,7 @@ function Main(input) {
   });
 
   /**
-   *
+   * マンハッタン距離を計算する
    * @param {{ y: number; x: number }} pt1
    * @param {{ y: number; x: number }} pt2
    * @returns
@@ -24,7 +24,7 @@ function Main(input) {
   };
 
   /**
-   *
+   * 加湿スコアを求める
    * @param {{ y: number; x: number }} pt1
    * @param {{ y: number; x: number }} pt2
    */
