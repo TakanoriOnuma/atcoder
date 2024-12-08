@@ -19,7 +19,7 @@ function Main(input) {
    * @param {{ y: number; x: number }} pt2
    * @returns
    */
-  const calcMahalanobisDistance = (pt1, pt2) => {
+  const calcManhattanDistance = (pt1, pt2) => {
     return Math.abs(pt1.y - pt2.y) + Math.abs(pt1.x - pt2.x);
   };
 
@@ -37,8 +37,8 @@ function Main(input) {
         }
 
         if (
-          calcMahalanobisDistance({ y, x }, pt1) <= D ||
-          calcMahalanobisDistance({ y, x }, pt2) <= D
+          calcManhattanDistance({ y, x }, pt1) <= D ||
+          calcManhattanDistance({ y, x }, pt2) <= D
         ) {
           score += 1;
         }
