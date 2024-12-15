@@ -22,6 +22,44 @@ const combinationList = (str = "", rest = ["A", "B", "C", "D", "E"]) => {
   return list;
 };
 
+const combinationList2 = (pattern = ["A", "B", "C", "D", "E"]) => {
+  /** @type {string[]} */
+  const list = [];
+
+  const addCombinations = (str = "", pattern = ["A", "B", "C", "D", "E"]) => {
+    const [first, ...restPattern] = pattern;
+    const joinedStr = str + first;
+
+    if (restPattern.length <= 0) {
+      if (str !== "") {
+        list.push(str);
+      }
+      list.push(joinedStr);
+    } else {
+      addCombinations(str, restPattern);
+      addCombinations(joinedStr, restPattern);
+    }
+  };
+
+  addCombinations("", pattern);
+  return list;
+};
+
+const combinationList3 = (pattern = ["A", "B", "C", "D", "E"]) => {
+  const digits = pattern.length;
+  const max = 2 ** digits - 1;
+
+  return Array.from({ length: max }, (_, i) => {
+    const value = i + 1;
+    let str = "";
+    for (let digit = 0; digit < digits; digit++) {
+      const mask = 1 << digit;
+      str += value & mask ? pattern[digit] : "";
+    }
+    return str;
+  });
+};
+
 /**
  * メイン実行
  * @param {string} input - 入力
@@ -37,7 +75,7 @@ function Main(input) {
     E,
   };
 
-  const list = combinationList();
+  const list = combinationList3();
   list.sort().reverse();
 
   const listWithScore = list.map((str) => {
