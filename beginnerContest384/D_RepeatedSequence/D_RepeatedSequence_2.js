@@ -8,11 +8,14 @@
  */
 function Main(input) {
   const inputList = input.split("\n");
-  const [N, S] = inputList[0].split(" ").map(Number);
+  const [N_Str, S_Str] = inputList[0].split(" ");
+  const N = Number(N_Str);
+  const S = BigInt(S_Str);
   const values = inputList[1].split(" ").map(Number);
 
   const total = values.reduce((acc, cur) => acc + cur, 0);
-  const rest = S % total;
+  const rest_bigint = S % BigInt(total);
+  const rest = Number(rest_bigint);
 
   // 尺取法で解く
   // @see https://qiita.com/drken/items/ecd1a472d3a0e7db8dce
