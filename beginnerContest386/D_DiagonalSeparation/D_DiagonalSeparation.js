@@ -10,41 +10,34 @@ function Main(input) {
   const inputList = input.split("\n");
   const [N, M] = inputList[0].split(" ").map(Number);
 
-  /** @type {{ x: number; y: number }[]} */
-  const blackRegionList = [];
-  /** @type {{ x: number; y: number }[]} */
-  const whiteRegionList = [];
-
-  const isValidPoint = (x, y, c) => {
-    if (c === "B") {
-      const isIncluded = whiteRegionList.some((region) => {
-        return x <= region.x && y <= region.y;
-      });
-      return !isIncluded;
-    }
-    if (c === "W") {
-      const isIncluded = blackRegionList.some((region) => {
-        return x >= region.x && y >= region.y;
-      });
-      return !isIncluded;
-    }
-  };
-
-  let result = true;
+  /** @type {{ x: number; y: number; c: 'W' | 'B' }[]} */
+  const points = [];
   for (let i = 0; i < M; i++) {
     const [X_Str, Y_Str, C] = inputList[i + 1].split(" ");
-    const X = Number(X_Str);
-    const Y = Number(Y_Str);
-    if (!isValidPoint(X, Y, C)) {
-      result = false;
-      break;
+    points.push({
+      x: Number(X_Str),
+      y: Number(Y_Str),
+      c: C,
+    });
+  }
+  points.sort((aPoint, bPoint) => {
+    if (aPoint.x === bPoint.x) {
+      return aPoint.y - bPoint.y;
     }
+    return aPoint.x - bPoint.x;
+  });
 
-    // 領域の更新をする
-    if (C === "B") {
-      //
-    } else if (C === "W") {
-      //
+  // xが小さい順に並べていて縦方向の条件は満たしているため、yの横方向の条件を満たせるかをチェックする
+  let result = true;
+  let yMax = Number.MAX_SAFE_INTEGER;
+  for (point of points) {
+    if (point.c === "W") {
+      yMax = Math.min(yMax, point.y);
+    } else {
+      if (point.y >= yMax) {
+        result = false;
+        break;
+      }
     }
   }
 
