@@ -26,7 +26,7 @@ class DSU {
   /**
    * その要素が属するリーダーを返す
    * @param {number} a - 要素
-   * @returns
+   * @returns {number}
    */
   leader(a) {
     if (this._parentOrSize[a] < 0) {
@@ -40,6 +40,7 @@ class DSU {
    * aとbを同じグループにする
    * @param {number} a - 要素
    * @param {number} b - 要素
+   * @returns {number} リーダー要素
    */
   merge(a, b) {
     let x = this.leader(a);
