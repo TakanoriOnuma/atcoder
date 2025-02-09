@@ -1,6 +1,7 @@
 /**
  * Disjoint Set Union, 素集合データ構造
  * @see https://qiita.com/AkariLuminous/items/93b8f13e0d33da4ac331
+ * @see https://github.com/atcoder/ac-library/blob/v1.5.1/atcoder/dsu.hpp
  */
 class DSU {
   /**
