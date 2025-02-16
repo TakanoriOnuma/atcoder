@@ -2,6 +2,8 @@
  * @see https://atcoder.jp/contests/abc393/tasks/abc393_e
  */
 
+const DEBUG = false;
+
 /**
  * GCDを求める
  * @param {number} a
@@ -22,6 +24,8 @@ const gcd = (a, b) => {
  * @param {string} input - 入力
  */
 function Main(input) {
+  DEBUG && console.time("Main");
+
   const inputList = input.split("\n");
   const [N, K] = inputList[0].split(" ").map(Number);
   const A_List = inputList[1].split(" ").map(Number);
@@ -44,6 +48,8 @@ function Main(input) {
     }
     console.log(result);
   }
+
+  DEBUG && console.timeEnd("Main");
 }
 
 Main(require("fs").readFileSync("/dev/stdin", "utf8"));
