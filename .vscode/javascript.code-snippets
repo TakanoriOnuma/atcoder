@@ -19,6 +19,7 @@
     "scope": "javascript,typescript",
     "prefix": "atcoder",
     "body": [
+      "// @ts-check",
       "/**",
       " * @see $1",
       " */",
