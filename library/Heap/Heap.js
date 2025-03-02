@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
  * ヒープ構造
  * @template T
@@ -66,12 +68,14 @@ class Heap {
    * @returns {T | undefined}
    */
   pop() {
-    if (this._arr.length === 0) {
-      return undefined;
-    }
     // 一番上の値の取得と末尾の値を取り出しを行う
     const res = this._arr[0];
     const poppedValue = this._arr.pop();
+    // そもそも取り出せるものがなければundefinedを返す
+    if (poppedValue == null) {
+      return undefined;
+    }
+    // 取り出したら空になる場合はデータを整理する必要がないので、取得した値を返して終了
     if (this._arr.length === 0) {
       return res;
     }
