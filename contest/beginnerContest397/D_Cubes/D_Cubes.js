@@ -5,26 +5,26 @@
 
 /**
  * 2次方程式を解く
- * @param {number} a
- * @param {number} b
- * @param {number} c
+ * @param {BigInt} a
+ * @param {BigInt} b
+ * @param {BigInt} c
  */
 const solveQuadraticEquation = (a, b, c) => {
-  let l = 0;
-  let r = 600000001; // なんでこの値？
+  let l = 0n;
+  let r = 600000001n; // なんでこの値？
   while (r - l > 1) {
-    const mid = Math.floor((l + r) / 2);
-    if (a * mid ** 2 + b * mid + c <= 0) {
+    const mid = (l + r) / 2n;
+    if (a * mid ** 2n + b * mid + c <= 0) {
       l = mid;
     } else {
       r = mid;
     }
   }
 
-  if (a * l ** 2 + b * l + c === 0) {
+  if (a * l ** 2n + b * l + c === 0n) {
     return l;
   }
-  return -1;
+  return -1n;
 };
 
 /**
@@ -33,17 +33,17 @@ const solveQuadraticEquation = (a, b, c) => {
  */
 function Main(input) {
   const inputList = input.split("\n");
-  const N = Number(inputList[0]);
+  const N = BigInt(inputList[0]);
 
-  for (let d = 1; d ** 3 <= N; d++) {
-    // 3*y^2 + 3*d*y + d^2 - N/d = 0
-    const m = N / d;
+  for (let d = 1n; d ** 3n <= N; d++) {
+    // 3*y^2 + 3*d*y + d^2 - N/d = 0を解く
     // N / d が整数でないと二次方程式の解も整数にならないためスキップ
-    if (!Number.isInteger(m)) {
+    if (N % d !== 0n) {
       continue;
     }
-    const result = solveQuadraticEquation(3, 3 * d, d ** 2 - m);
-    if (result > 0) {
+    const m = N / d;
+    const result = solveQuadraticEquation(3n, 3n * d, d ** 2n - m);
+    if (result > 0n) {
       console.log(`${result + d} ${result}`);
       return;
     }
