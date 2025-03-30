@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
  * フェニックツリー
  * @see https://qiita.com/AkariLuminous/items/f2f7930e7f67963f0493
