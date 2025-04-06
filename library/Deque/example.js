@@ -9,6 +9,8 @@ numberDeque.pushBack(5);
 numberDeque.pushFront(2);
 numberDeque.pushFront(1);
 numberDeque.pushBack(6);
+console.log(numberDeque);
+
 while (true) {
   const value = numberDeque.popFront();
   if (value == null) {
@@ -26,6 +28,8 @@ itemDeque.pushBack({ id: 3, value: 5 });
 itemDeque.pushFront({ id: 4, value: 2 });
 itemDeque.pushFront({ id: 5, value: 1 });
 itemDeque.pushBack({ id: 6, value: 6 });
+console.log(itemDeque);
+
 while (true) {
   const item = itemDeque.popFront();
   if (item == null) {
